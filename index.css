@@ -1,0 +1,7 @@
+div.problem {
+    background-color: rgb(245, 255, 150);
+}
+
+div.problem:before {
+    content: "Problema: ";
+}
