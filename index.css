@@ -3,10 +3,28 @@ main {
     text-align: justify;
 }
 
-div.problem {
+.problem {
     background-color: rgb(245, 255, 150);
+    padding: 1em;
+    border-radius: 1em;
 }
 
-div.problem:before {
-    content: "Problema: ";
+.theorem {
+    background-color: rgb(122, 255, 102);
+    padding: 1em;
+    border-radius: 1em 1em 0 0;
+    margin-bottom: 5px;
+}
+
+.lemma {
+    background-color: rgb(123, 224, 255);
+    padding: 1em;
+    border-radius: 1em 1em 0 0;
+    margin-bottom: 5px;
+}
+
+.proof {
+    background-color: rgba(181, 181, 181, 0.687);
+    padding: 1em;
+    border-radius: 0 0 1em 1em;
 }
