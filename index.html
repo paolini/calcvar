@@ -2,7 +2,8 @@
 <html lang="it">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">        <title>Appunti di Calcolo delle Variazioni</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>Appunti di Calcolo delle Variazioni</title>
 
         <link rel="stylesheet" type="text/css" href="index.css">
 
@@ -18,20 +19,153 @@
             onload="myRender()"></script>
     </head>
     <body>
-        <main class="container">
+        <div class="container"><main>
             <h1>Elementi di Calcolo delle Variazioni</h1>
-                <p>
-                    Il calcolo delle variazioni nasce con il seguente.
+            <p>
+                Il calcolo delle variazioni nasce con il seguente.
+            </p>
+            <p>
+                <b>Problema (della brachistocrona).</b>
+                Tra tutte le curve che congiungono due estremi $O$ e $P$ 
+                in un piano verticale, determinare quella che minimizza 
+                il tempo di percorrenza di un corpo vincolato sulla curva,
+                lasciato con velocità nulla nel punto $O$ e soggetto 
+                alla forza di gravità.
+            </p>
+            <p>
+                Mettiamo degli assi cartesiani ortogonali centrati nel punto $O$
+                con l'asse delle $x$ orientato verso il basso e l'asse delle $y$ 
+                orizzontale. 
+                Siano $a$ e $b$ le coordinate del punto $P$.
+                Supponiamo che la curva si possa scrivere nella forma 
+                $y=u(x)$. 
+                Avremo dunque le condizioni: $u(0)=0$ e $u(a) = b$.
+                Per la conservazione dell'energia abbiamo $\frac 1 2 m v^2 = m g x$
+                da cui $v = \sqrt{2g x}$.
+                Tale velocità ha direzione tangente alla curva e la sua 
+                componente verticale $v_x$ è data da $v_x = \frac{v}{\sqrt{1+(u'(x))^2}}$.
+                Avremo allora che il tempo impiegato per andare dal 
+                punto $0$ lungo la curva fino al punto $P$, è dato da
+                $$
+                    T 
+                    = \int_0^a \frac{1}{v_x}\, dx 
+                    = \int_0^a \frac{\sqrt{1+(u'(x))^2}}{\sqrt{2gx}}\, dx.
+                $$
+            </p>
+            <p>
+                La nostra incognita è la funzione $u$ che supponiamo essere 
+                di classe $C^1$ per dare senso ai calcoli fatti sopra e dovrà 
+                soddisfare le condizioni <i>al bordo</i>
+                $u(0)=0$ e $u(a)=b$. 
+                Siamo quindi interessati a cercare la soluzione $u\in U$ 
+                nell'insieme delle funzioni:
+                $$
+                    U = \ENCLOSE{u\in C^1([0,a])\colon u(0)=0, u(a)=b}.
+                $$
+                Si noti che $U$ è un sottospazio affine dello spazio 
+                vettoriale $C^1([0,a])$ infatti si ha 
+                $$
+                  U-U 
+                  = \ENCLOSE{u_1-u_2\colon u_1\in U, u_2\in U}
+                  = \ENCLOSE{u\in C^1([0,a])\colon u(0)=u(a)=0}
+                  = C^1_0([0,a]) 
+                $$
+                che è un sottospazio vettoriale di $C^1$.
+            </p>
+            <p>
+                Il nostro problema è quindi quello di trovare un 
+                minimo del funzionale 
+                $$
+                    \F \colon U \to \mathbb R,\\
+                    \F(u) = \int_I f(x, u(x), u'(x)) \, dx
+                $$
+                con $I=[0,a]$ e $f(x,z,p)=\frac{\sqrt{1+p^2}}{\sqrt{2gx}}$.
+                Un funzionale scritto in questa forma è chiamato 
+                <i>funzionale classico del calcolo delle variazioni.</i>
+            </p>
+
+            <h2>Equazione di Eulero-Lagrange</h2>
+            <p>
+                Se $U$ è uno spazio affine sullo spazio vettoriale $V$
+                data $\phi\in V$ la restrizione del funzionale $\F$ 
+                alla retta passante per $u$ con direzione $\phi$ 
+                è data da
+                $$
+                    g(t) = \F(u+t\phi).
+                $$ 
+                Se $u$ è un punto di minimo del funzionale $\F$ 
+                allora $0$ dovrà essere punto di minimo per $g$ 
+                e se $g$ è derivabile si avrà quindi $g'(0)=0$.
+            </p>
+            <p>
+                La derivata $g'(0)$ non è altro che la derivata direzionale 
+                $\frac{\partial F}{\partial \phi}(u)$
+                (chiamata <i>derivata di Gateaux,</i>
+                nel contesto degli spazi di dimensione infinita).
+                La funzione $\phi$ rappresenta una <i>variazione</i>
+                della nostra funzione $u$.
+                In opportune ipotesi la condizione $g'(0)=0$ si
+                traduce in una equazione differenziale, come enunciato 
+                nel seguente.
                 </p>
+
                 <p>
-                    <b>Problema (della brachistocrona).</b>
-                    Tra tutte le curve che congiungono due estremi $A$ e $B$ 
-                    in un piano verticale, determinare quella che minimizza 
-                    il tempo di percorrenza di un corpo vincolato sulla curva,
-                    lasciato con velocità nulla nel punto $A$ e soggetto 
-                    alla forza di gravità.
+                    <b>Teorema (equazione di Eulero-Lagrange)</b>
+                    Sia $u\in C^2([a,b])$ e sia $f=f(x,z,p)$ una funzione di 
+                    classe $C^2$ definita in un intorno della curva 
+                    $x\mapsto (x,u(x),u'(x))$. 
+                    Se $\F(u)$ è minimo allora si ha
+                    $$
+                    f_z (x,u(x),u'(x)) = \frac{d}{dx} \enclose{f_p(x,u(x),u'(x))}.
+                    $$
                 </p>
-        </main>
+                <p><i>Dimostrazione.</i>
+                Si ha
+                $$
+                  \frac{\partial F}{\partial \phi}(u) 
+                  = \Enclose{\frac{d}{dt}\int_I f(x,u+t \phi,u'+t\phi')\, dx}_{t=0}.
+                $$
+                Se $f$ è di classe $C^1$ in un intorno della curva 
+                $x\mapsto (x,u(x),u'(x))$ 
+                allora posso scambiare la derivata con l'integrale:
+                $$
+                \Enclose{\frac{d}{dt} \int_a^b f(x,u+t\phi,u'+t\phi')}_{t=0}
+                = \int_a^b \left[ f_z(x,u,u') \phi 
+                    + f_{p}(x,u,u') \phi' \right] \, dx.
+                $$
+                Se ora $f$ è di classe $C^2$ e anche $u$ lo è, 
+                possiamo integrare per parti e ottenere 
+                $$
+                = \int_a^b \enclose{f_z(x,u,u') -(f_p(x,u,u'))_x } \phi(x) \, dx.
+                $$
+                In base al lemma seguente concludiamo che 
+                $$
+                   f_z = \frac{d}{dx} f_p.
+                $$
+            </p>
+
+            <p><b>Lemma fondamentale del calcolo delle variazioni.</b>
+                Se $g\in C^0([a,b])$ e $\int_a^b g(x)\phi(x)\, dx = 0$ per ogni $\phi\in C_c^\infty([a,b])$
+                allora $g(x)=0$ per ogni $x\in [a,b]$.
+            </p>
+            <p><i>Dimostrazione.</i>
+                Se fosse $g(x_0) > 0$ con $x_0\in (a,b)$ allora esiste 
+                un intorno $I$ di $x_0$ tale che $g(x) > 0$ per ogni $x\in I$.
+                Ma è possibile costruire $\phi\in C_c^\infty([a,b])$ 
+                tale che $\phi(x_0)> 0$, $\phi(x)\ge 0$ per ogni $x\in I$
+                e $\phi(x) = 0$ per ogni $x\not \in I$.
+                Chiaramente si avrebbe $\int_a^b g(x)\phi(x)\, dx 
+                = \int_I g(x)\phi(x)\, dx > 0$, contro l'ipotesi.
+
+                Allo stesso modo si procede se $g(x_0) &lt; 0$. 
+                Se poi $g$ si annulla su tutto $(a,b)$ per continuità si annulla 
+                anche su $[a,b]$.
+            </p>
+
+        </main></div>
+
+
+
         <!-- my code -->        
         <script src="index.js"></script>
         <!-- bootstrap-->

@@ -1,3 +1,8 @@
+main {
+    max-width: 60em;
+    text-align: justify;
+}
+
 div.problem {
     background-color: rgb(245, 255, 150);
 }

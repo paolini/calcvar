@@ -2,15 +2,24 @@ function myRender() {
     console.log(`myRender() called`)
     // • renderMathInElement() is a function from KaTeX
     renderMathInElement(document.body, {
-        // customised options
-        // • auto-render specific keys, e.g.:
         delimiters: [
             {left: '$$', right: '$$', display: true},
             {left: '$', right: '$', display: false},
             {left: '\\(', right: '\\)', display: false},
             {left: '\\[', right: '\\]', display: true}
         ],
-        // • rendering keys, e.g.:
-        throwOnError : false
+        throwOnError : false,
+        macros: {
+            "\\RR": "\\mathbb{R}",
+            "\\ZZ": "\\mathbb{Z}",
+            "\\CC": "\\mathbb{C}",
+            "\\QQ": "\\mathbb{Q}",
+            "\\NN": "\\mathbb{N}",
+            "\\F": "\\mathcal{F}",
+            "\\phi": "\\varphi",
+            "\\enclose": "\\left(#1\\right)",
+            "\\Enclose": "\\left[#1\\right]",
+            "\\ENCLOSE": "\\left\\{#1\\right\\}",
+        }
       });
 }
