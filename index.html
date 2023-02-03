@@ -384,6 +384,104 @@
                 è un minimo assoluto nella classe di tutte le funzioni $C^1$ con condizione
                 al bordo fissate.
             </p>
+
+            <h2>Estremali, estremali deboli</h2>
+            <p>
+                Diremo che $u$ è un <i>estremale debole</i>
+                per il funzionale $\F$ se 
+                per ogni variazione $\phi$ la derivata di $\F$ 
+                nella direzione $\phi$ è nulla:
+                $$
+                0 = \delta\F(u,\phi) 
+                = \frac{\partial\F(u)}{\partial \phi} 
+                = \Enclose{\frac{d}{d\eps}}\F(u+\eps\phi)}_{\eps=0}.
+                $$
+                Chiaramente se $\F$ ha minimo in $u$ 
+                allora $u$ è un estremale debole, come abbiamo già osservato.
+                Per avere un estremale debole è sufficiente la minimalità locale 
+                (ovvero per <i>piccole</i> variazioni). 
+                Ma questa non è una condizione necessaria. 
+                Come per le funzioni di una variabile è infatti possibile 
+                avere punti critici (estremali deboli) che non sono né punti 
+                di massimo né punti di minimo, neanche localmente.
+                L'esempio più semplice è $f(p)=p^3$ che ci fornisce 
+                anche l'esempio con i funzionali del calcolo delle variazioni.
+            </p>
+            <p class="problem">
+                <b>Problema 3.</b>
+                Minimizzare il funzionale:
+                $$ 
+                  \F(u) = \int_0^1 u'(x)^3\, dx
+                $$
+                sulla classe $C^1_0([0,1])$.
+            </p>
+            <p>
+                Osserviamo che la lagrangiana è $f(x,z,p) = p^3$ 
+                e l'equazione di Eulero Lagrange $(f_p)'=f_z$ 
+                diventa $3(u')^2 = m$ (costante) ovvero $u(x) = mx + q$. 
+                Ma dalle condizioni al bordo dovrà essere $m=0$ 
+                e $q=0$ quindi l'unica soluzione dell'equazione di E-L 
+                è $u(x)=0$.
+                D'altra parte con un po' di attenzione è possibile costruire 
+                funzioni $u_\eps$ tali che $\F(u_\eps)\to -\infty$ 
+                quando $\eps\to 0$.
+                Bisogna osservare che una funzione con lo stesso valore agli 
+                estremi dell'intervallo deve avere una derivata con 
+                media nulla: $\int_0^1 u' = u(1) - u(0) = 0$.
+                Il termine $p^3$ dà un contributo negativo quando la derivata 
+                è negativa, ma non posso avere derivata negativa senza avere 
+                anche la corrispondente derivata positiva (la media è nulla).
+                <img src="problema3.png" alt="problema1" style="float: right; margin: 0 0 1em 1em;"/>
+                L'idea è però posso avere un tratto con pendenza negativa molto
+                ripido e compensarlo con un tratto a pendenza positiva ma meno 
+                ripido. Nel complesso il contributo dato dal tratto ripido, 
+                anche se più breve, sarà maggiore di quello dato dal tratto 
+                meno ripido, anche se più lungo. 
+                Lo si può fare con una funzione come quella nel disegno.   
+                Chiaramente la funzione può essere approssimata da funzioni 
+                $C^1$ (o anche $C^\infty$) senza modificare di molto 
+                il funzionale. 
+            </p>
+            <p class="theorem"><b>Condizione di Eulero-Lagrange</b>
+                Se $u$ è un estremale debole per il funzionale classico 
+                $\F$ con condizioni al bordo fissate, 
+                se $u\in C^2$ e anche $f\in C^2$ almeno in un intorno 
+                aperto della curva $(x,u(x),u'(x))$, allora vale 
+                l'equazione di Eulero-Lagrange:
+                $$  
+                \frac{d}{dx} f_p = f_z.
+                $$
+            </p>
+            <p class="proof"><b>Dimostrazione.</b> Già visto sopra. 
+                Si tratta eventualmente di verificare che bastano le ipotesi 
+                di regolarità appena enunciate.
+            </p>
+            <p>
+                Le $u$ che soddisfano l'equazione di E-L sono chiamate 
+                <i>estremali</i>. 
+                Dunque il teorema precedente afferma che estremali deboli 
+                sono estremali. 
+                $$
+                 \text{minimo} 
+                 \implies \text{minimo locale} 
+                 \implies \text{estremale debole}
+                 \Longleftarrow \text{estremale}.
+                $$
+            </p>
+            <p>
+                Posso costruire esempi di funzioni 
+            </p>
+
+            <p class="problem">
+                <b>Equazione di Newton</b>
+                La lagrangiana $f(t,x,v) = \frac 1 2 m v^2 - V(x)$
+                ha come equazione di E-L:
+                $$
+                    - V_x = m x''
+                $$
+                che non è altro che l'equazione di Newton $F = ma$.
+            </p>
+
         </main></div>
         <!-- my code -->        
         <script src="index.js"></script>

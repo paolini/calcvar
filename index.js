@@ -17,6 +17,7 @@ function myRender() {
             "\\NN": "\\mathbb{N}",
             "\\F": "\\mathcal{F}",
             "\\phi": "\\varphi",
+            "\\eps": "\\varepsilon",
             "\\enclose": "\\left(#1\\right)",
             "\\Enclose": "\\left[#1\\right]",
             "\\ENCLOSE": "\\left\\{#1\\right\\}",
