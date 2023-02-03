@@ -319,6 +319,71 @@
                 Abbiamo quindi un esempio di un funzionale che non ha minimo 
                 neanche ampliando la classe delle funzioni considerate.
             </p>
+            <h2>convessità</h2>
+            <p>
+                I funzionali considerati nei due esempi precedenti 
+                sono della forma classica del calcolo delle variazioni 
+                con lagrangiane:
+                $$
+                    f_2(x,z,p) = (1-p^2)^2, \qquad 
+                    f_3(x,z,p) = (1-p^2)^2 + z^2.
+                $$
+                Il problema della brachistocrona invece aveva lagrangiana
+                $$
+                  f(x,p) = \frac{\sqrt{1+p^2}}{\sqrt x}.
+                $$
+                Il vantaggio fondamentale di quest'ultimo problema 
+                è che la lagrangiana non dipende da $z$ 
+                e risulta essere convessa 
+                rispetto alla variabile $p$ per ogni $x$ fissato
+                (cosa che non avviene per $f_2$ e $f_3$).
+                Vediamo come questa proprietà ci permette di dimostrare 
+                che la cicloide, essendo 
+                soluzione dell'equazione di Eulero-Lagrange, 
+                è effettivamente un minimo del funzionale.
+            </p>
+            <p>
+                Per verificare che $f$ è convessa rispetto a $p$ 
+                basta farne le derivate:
+                $$
+                f_p = \frac{p}{\sqrt{1+p^2}\sqrt x}, 
+                \\
+                f_{pp} = \frac{1+p^2-p^2}{(1+p^2)^{3/2}\sqrt x}.
+                $$
+            </p>
+            <p>Dunque la funzione sta sopra la sua retta tangente 
+               in qualunque punto $p_0$. 
+               Se $f(x,p)$ è convessa rispetto a $p$
+               per ogni $x$, allora per ogni $p_0$ 
+               il grafico di $f$ sta sopra la retta tangente
+               in tale punto:
+               $$
+               f(x,p) - f(x,p_0) \geq f_p(x,p_0)\cdot (p-p_0).
+               $$
+               Sia ora $u_0$ la soluzione dell'equazione di Eulero-Lagrange
+               (la cicloide nel nostro caso).
+               Per ogni $x$ possiamo scegliere $p_0=u_0'(x)$ per ottenere 
+               $$
+               f(x,u'(x)) - f(x,u_0'(x)) 
+                \geq f_p(x,u_0'(x))\cdot (u'(x)-u_0'(x))
+               $$
+               e integrando su $[0,a]$ si ottiene
+               $$
+               \F(u)-\F(u_0) = \int_0^a f_p(x,u_0,u_0')(u'-u_0')\, dx.
+               $$
+               Ma l'equazione di Eulero-Lagrange ci diceva che $f_p=c$ 
+               è costante (in questo caso particolare, 
+               in quanto $f_z=0$) e dunque 
+               $$
+               \F(u)-\F(u_0) 
+                = c \int_0^a (u'-u_0')\, dx 
+                = c \Enclose{u-u_0}_0^a = 0
+               $$
+               in quanto $u(0)=u(a)=u_0(0)=u_0(a)=0$.
+                Abbiamo quindi dimostrato che $u_0$, la nostra cicloide, 
+                è un minimo assoluto nella classe di tutte le funzioni $C^1$ con condizione
+                al bordo fissate.
+            </p>
         </main></div>
         <!-- my code -->        
         <script src="index.js"></script>
