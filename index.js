@@ -20,6 +20,7 @@ function myRender() {
             "\\enclose": "\\left(#1\\right)",
             "\\Enclose": "\\left[#1\\right]",
             "\\ENCLOSE": "\\left\\{#1\\right\\}",
+            "\\abs": "\\left\\lvert#1\\right\\rvert",
         }
       });
 }

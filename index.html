@@ -114,15 +114,19 @@
                     Sia $u\in C^2([a,b])$ e sia $f=f(x,z,p)$ una funzione di 
                     classe $C^2$ definita in un intorno della curva 
                     $x\mapsto (x,u(x),u'(x))$. 
-                    Se $\F(u)$ è minimo allora si ha
+                    Se $\F(u)$ è minimo allora in $u$ si ha
                     $$
-                    f_z (x,u(x),u'(x)) = \frac{d}{dx} \enclose{f_p(x,u(x),u'(x))}.
+                        f_z = \frac{d}{dx} f_p
+                    $$ 
+                    cioè, più esplicitamente,
+                    $$
+                        f_z (x,u(x),u'(x)) = \frac{d}{dx} \Enclose{f_p(x,u(x),u'(x))}.
                     $$
                 </p>
                 <p class="proof"><i>Dimostrazione.</i>
                 Si ha
                 $$
-                  \frac{\partial F}{\partial \phi}(u) 
+                  \frac{\partial F}{\partial \phi}(u)  
                   = \Enclose{\frac{d}{dt}\int_I f(x,u+t \phi,u'+t\phi')\, dx}_{t=0}.
                 $$
                 Se $f$ è di classe $C^1$ in un intorno della curva 
@@ -162,10 +166,160 @@
                 anche su $[a,b]$.
             </p>
 
+            <p>
+                Nel caso del problema della brachistocrona abbiamo 
+                $f(x,z,p) = \frac{\sqrt{1+p^2}}{\sqrt {2gx}}$ e quindi 
+                $f_z=0$, $f_p = \frac{p}{\sqrt{1+p^2}\sqrt {2gx}}$.
+                L'equazione di Eulero-Lagrange diventa quindi
+                $$
+                    \frac{d}{dx}\frac{u'}{\sqrt{2gx}\cdot \sqrt{1+u'^2}} = 0.
+                $$
+                Dunque esiste una costante $c$ per cui 
+                $$
+                    \frac{u'}{\sqrt{x}\cdot \sqrt{1+u'^2}} = c.
+                $$
+                Elevando al quadrato
+                $$
+                    (u')^2 = c^2\cdot (1+u'^2)\cdot x
+                $$
+                da cui 
+                $$
+                  (u')^2 
+                  = c^2 \cdot \frac{x}{1-c^2\cdot x}
+                  = c^2 \cdot \frac{x^2}{x-c^2 x^2}
+                $$
+                supponendo $u'>0$ 
+                $$\begin{align*}
+                 u'(x) 
+                 &= \frac{cx}{\sqrt{x-c^2x^2}}
+                 = \frac{cx}{\sqrt{\frac 1{4c^2} - \enclose{cx - \frac 1{2c}}^2}} 
+                 \\
+                 &= \frac{2c^2 x}{\sqrt{1-(2c^2 x - 1)^2}}.
+                \end{align*}$$
+                Dunque integrando e facendo il cambio di variabile 
+                $s=1-2c^2 x$ si ottiene
+                $$
+                \begin{align*}
+                 u(x) 
+                    &= \int_0^x \frac{2c^2x}{\sqrt{1-(2c^2 x - 1)^2}}\, dx
+                    \\
+                    &= \frac{1}{2c^2}\int_1^{1-2c^2x} \frac{s-1}{\sqrt{1-s^2}}\, ds 
+                    \\
+                    &= \frac{1}{2c^2}\Enclose{-\sqrt{1-s^2}+\arccos s}_1^{1-2c^2x} 
+                    \\
+                    &= R\Enclose{\arccos\enclose{1-\frac x R} - \sqrt{1-\enclose{\frac x R -1}^2}}
+                    \\
+                    &= R \arccos\frac{R-x}{R} - \sqrt{R^2 - (x-R)^2}
+                \end{align*}
+                $$
+                dove abbiamo posto $R=\frac 1 {2c^2}$.
+                Si può facilmente riconoscere che $u(x)$ è l'equazione di una cicloide 
+                ovvero che il punto $P(x) = (x,u(x))$ si trova sulla circonferenza 
+                di raggio $R$ che rotola al di sotto dell'asse $x$.
+                Infatti se $\theta$ è l'angolo di rotazione di tale circonferenza, 
+                si avrà 
+                $$
+                  \begin{cases}
+                    x = R - R \cos\theta \\
+                    y = R\theta - R\sin\theta  
+                  \end{cases}
+                $$
+                da cui si ottiene $\theta = \arccos \frac{R-x}{R}$
+                e quindi 
+                $$
+                  y = R\arccos\frac{R-x}{R} - \sqrt{R^2 - (x-R)^2} = u(x).
+                $$
+            </p>
+            <p>
+                La soluzione che abbiamo trovato è solamente il primo arco di 
+                cicloide, dove $u'>0$. 
+                Il secondo arco (dove il punto materiale risale rallentando) si trova 
+                scegliendo il segno opposto quando si estrae la radice quadrata.
+            </p>
+            <p>
+                La costante $R$ può essere univocamente determinata dal passaggio 
+                dal punto $P$ ovvero dalla condizione $u(a) = b$. 
+                Si nota infatti che al variare di $R$ le curve che abbiamo trovato 
+                sono tutte tra loro omotetiche. 
+                Se disegno una qualunque di queste 
+                curve, ad esempio quella con $R=1$ e considero la semiretta 
+                uscente da $O$ e passante dal punto $P=(a,b)$, tale semiretta 
+                incontrerà la curva in un singolo punto, in quanto possiamo 
+                verificare che tale curva è concava. 
+                Allora basterà riscalare la curva in modo da ottenere 
+                (in modo unico) il passaggio dal punto dato.
+            </p>
+            <h2>Weierstrass: l'esistenza non è garantita</h2>
+            <p>
+                Nei paragrafi precedenti abbiamo mostrato che se c'è una soluzione 
+                di classe $C^2$ del problema della brachistocrona allora tale soluzione 
+                può essere univocamente identificata in una particolare cicloide.
+                Significa che se c'è una soluzione di classe $C^2$ allora l'abbiamo 
+                trovata. 
+                Ma nulla ci dice che la soluzione esista, e se esiste non possiamo 
+                immediatamente affermare che sia di classe $C^2$.
+                Per convincerci di ciò facciamo dei semplici esempi.
+            </p>    
+            <p class="problem">
+                <b>Problema 2.</b>
+                Minimizzare il funzionale:
+                $$
+                \F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2\, dx
+                $$
+                tra le funzioni $u\in C^1_0([-1,1],\R)$.
+            </p>
+            <p>
+                La funzione integranda è sempre non negativa e si annulla 
+                quando $u'(x)=\pm 1$. 
+                Dunque una funzione con la proprietà $\abs{u'(x)}=1$ sarebbe
+                senz'altro un minimo assoluto di questo funzionale.
+                E' facile verificare che nessuna funzione derivabile può soddisfare 
+                questa condizione e contemporaneamente assumere lo stesso valore 
+                ai due estremi dell'intervallo. 
+                La funzione $u(x) = 1-\abs{x}$, viceversa, soddisfa la condizione 
+                in tutti i punti tranne $x=0$ (dove non è derivabile) e in effetti 
+                annulla il funzionale se ci accontentiamo che la derivata esista 
+                quasi ovunque. 
+                D'altra parte ci sono funzioni $C^1_0$ che approssimano questa funzione 
+                derivabile e che danno valori arbitrariamente piccoli al funzionale.
+            </p>
+            <p>
+                Dunque siamo nella situazione in cui il minimo non esiste nella classe 
+                $C^1_0$ ma esiste in una classe più ampia. 
+                Questo ci porta a pensare che per avere esistenza del minimo sia 
+                necessario considerare una classe più ampia di funzioni.
+                D'altra parte le cose possono anche andare peggio, 
+                come mostra l'esempio seguente.
+            </p>
+            <p class="problem">
+                <b>Problema 3.</b>
+                Minimizzare il funzionale:
+                $$
+                \F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2 + \Enclose{u'(x)}^2\, dx
+                $$
+                tra tutte le funzioni $u\in C^1([-1,1])$.
+            </p>
+            <p>
+                Come nell'esempio precedente il funzionale non è mai negativo e quindi 
+                se si ottiene un valore nullo questo sarà il minimo assoluto.
+                D'altra parte visto che $\F(u)$ è la somma di due quantità positive 
+                se risulta nullo dovrà essere nullo $\int_{-1}^1 \Enclose{u(x)}^2\, dx$
+                ma questo può succedere solo se $u(x) = 0$ quasi ovunque.
+                Ma in tal caso se $u$ è derivabile (in qualche senso) dovrà essere $u'(x)=0$ 
+                e quindi il primo addendo del funzionale (che è quello considerato nel problema precedente)
+                dà un contributo pari a $1$.
+            </p>
+            <p>
+                Possiamo però costruire funzioni di classe $C^1$ (ma anche di classe $C^\infty$)
+                che rendono il valore $\F(u)$ arbitrariamente piccolo. 
+                Basterà considerare funzioni a denti di sega con derivata quasi sempre 
+                pari a $1$ o $-1$ e valore compreso tra $0$ ed $\epsilon$. 
+            </p>
+            <p>
+                Abbiamo quindi un esempio di un funzionale che non ha minimo 
+                neanche ampliando la classe delle funzioni considerate.
+            </p>
         </main></div>
-
-
-
         <!-- my code -->        
         <script src="index.js"></script>
         <!-- bootstrap-->
