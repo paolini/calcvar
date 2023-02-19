@@ -519,9 +519,6 @@ sono estremali.
     \Longleftarrow \text{estremale}.
 \]
 </p>
-<p>
-Posso costruire esempi di funzioni 
-</p>
 
 <p class="problem" name="equazione di Newton">
 La lagrangiana $f(t,x,v) = \frac 1 2 m v^2 - V(x)$
@@ -582,11 +579,11 @@ senza mai intersecarsi tra loro.
 Questo si ottiene tramite una funzione $f=f(x,c)$ che manda 
 un rettangolo $\Gamma=[a,b]\times [-\eps,\eps]$ nell'intorno 
 $G$ del grafico di $u_0$ in modo che sia $f(x,c) = (x, u_c(x))$
-con $f:\colon \Gamma\to G$ bigettiva.
+con $f\colon \Gamma\to G$ bigettiva.
 Un tale campo si dice <i>campo adattato</i> ad $u_0$.
 
 La fibrazione $f$ induce un campo di pendenze che denotiamo 
-con $\P$: $\P(x,z) = u_c'(x)$ dove $c=f^{-1}(x,z)$.
+con $\P(x,z) = u_c'(x)$ dove $c=f^{-1}(x,z)$.
 Diremo che il campo $\P$, adattato a $u_0$, 
 è ottimale per il funzionale $\F$ in $u_0$ se 
 esiste una funzione $S(x,z)$ tale che posto 
@@ -605,28 +602,48 @@ per ogni $u$ con grafico dentro $G$ e quindi
 garantisce che $u_0$ è il minimo di $\F$ nell'intorno $G$.
 Si noti che stiamo ottenendo un minimo locale in topologia 
 $C^0$ e non in $C^1$.
+Diremo che il campo $f$ è <i>ottimale</i> se 
+è ottimale adattato ad ogni $u_c$ della fibrazione
+cioè se $F(x,z,\P) = M(x,z,\P)$ su tutto $G$.
 
 Per costruire $S$ dobbiamo identificarne delle proprietà. 
-Se vogliamo che $S$ renda $f$ ottimale bisogna che $S$ 
-soddisfi le equazioni di Caratheodory:
-\[
-\begin{align*}
- S_x(x,z) &= F(x, z, \P(x,z)) - \P(x,z)\cdot F_p(x,z,\P(x,z)) \\
- S_z(x,z) &= F_p(x,z,\P(x,z)).
- \end{align*}
-\]
-
-Infatti, se $S$ soddisfa le equazioni di Caratheodory, si ha 
-\[
-F(x,z,\P) = 
-\]
-
-
-
-
-
+Cominciamo con la seguente osservazione.
 
 </p>
+<p class="lemma">
+Se $F\ge M$ allora $S$ rende $f$ ottimale 
+se e solo se 
+$S$ soddisfa le <i>equazioni di Caratheodory:</i>    
+\[
+\begin{align*}
+ S_x(x,z) &= F(x, z,\P) - \P\cdot F_p(x,z,\P) \\
+ S_z(x,z) &= F_p(x,z,\P).
+ \end{align*}
+\]
+</p>
+<p class="proof">
+Se $S$ soddisfa le equazioni di Caratheodory, si ha 
+\[
+F(x,z,\P) 
+= S_x + \P \cdot F_p(x,z,\P)
+= S_x + \P \cdot S_z = M(x,z,\P).
+\]
+Viceversa se $F(x,z,\P) = M(x,z,\P)$ 
+e contemporaneamente $F(x,z,p)\ge M(x,z,p)$
+per ogni $(x,z,p)\in G\times \RR^n$ allora
+la funzione $F(x,z,p)-M(x,z,p)$ ha un 
+minimo quando $p=\P(x,z)$
+e dunque la sua derivata rispetto a $p$ 
+(ovvero il gradiente se $p$ è un vettore)
+è nulla quando $p=\P(x,z)$.
+Significa che $F_p(x,z,\P) = M_p(x,z,\P)$.
+Ma $M=S_x + pS_z$ dunque $M_p = S_z$ e si
+ottiene la seconda equazione di Caratheodory.
+Ma ora, visto che $F(x,z,\P) = M(x,z,\P)$
+si deduce $F(x,z,\P) = S_x + \P S_z(x,z,\P)
+= S_x + \P F_p(x,z,\P)$.
+</p>
+
 
         </main></div>
         <!-- my code -->        
