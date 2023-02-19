@@ -25,8 +25,7 @@
 <p>
 Il calcolo delle variazioni nasce con il seguente.
 </p>
-<p class="problem">
-<b>Problema (della brachistocrona).</b>
+<p class="problem" name="della brachistocrona">
 Tra tutte le curve che congiungono due estremi $O$ e $P$ 
 in un piano verticale, determinare quella che minimizza 
 il tempo di percorrenza di un corpo vincolato sulla curva,
@@ -110,8 +109,7 @@ traduce in una equazione differenziale, come enunciato
 nel seguente.
 </p>
 
-<p class="theorem">
-<b>Teorema (equazione di Eulero-Lagrange)</b>
+<p class="theorem" name="equazione di Eulero-Lagrange">
 Sia $u\in C^2([a,b])$ e sia $f=f(x,z,p)$ una funzione di 
 classe $C^2$ definita in un intorno della curva 
 $x\mapsto (x,u(x),u'(x))$. 
@@ -124,7 +122,7 @@ $$
     f_z (x,u(x),u'(x)) = \frac{d}{dx} \Enclose{f_p(x,u(x),u'(x))}.
 $$
 </p>
-<p class="proof"><i>Dimostrazione.</i>
+<p class="proof">
 Si ha
 $$
     \frac{\partial F}{\partial \phi}(u)  
@@ -149,11 +147,11 @@ $$
 $$
 </p>
 
-<p class="lemma"><b>Lemma (fondamentale del calcolo delle variazioni).</b>
+<p class="lemma" name="fondamentale del calcolo delle variazioni">
 Se $g\in C^0([a,b])$ e $\int_a^b g(x)\phi(x)\, dx = 0$ per ogni $\phi\in C_c^\infty([a,b])$
 allora $g(x)=0$ per ogni $x\in [a,b]$.
 </p>
-<p class="proof"><i>Dimostrazione.</i>
+<p class="proof">
 Se fosse $g(x_0) > 0$ con $x_0\in (a,b)$ allora esiste 
 un intorno $I$ di $x_0$ tale che $g(x) > 0$ per ogni $x\in I$.
 Ma è possibile costruire $\phi\in C_c^\infty([a,b])$ 
@@ -261,8 +259,7 @@ Ma nulla ci dice che la soluzione esista, e se esiste non possiamo
 immediatamente affermare che sia di classe $C^2$.
 Per convincerci di ciò facciamo dei semplici esempi.
 </p>    
-<p class="problem">
-<b>Problema 2.</b>
+<p class="problem" name="2">
 Minimizzare il funzionale:
 $$
 \F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2\, dx
@@ -292,8 +289,7 @@ necessario considerare una classe più ampia di funzioni.
 D'altra parte le cose possono anche andare peggio, 
 come mostra l'esempio seguente.
 </p>
-<p class="problem">
-<b>Problema 3.</b>
+<p class="problem" name="3">
 Minimizzare il funzionale:
 $$
 \F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2 + \Enclose{u'(x)}^2\, dx
@@ -386,6 +382,57 @@ Abbiamo quindi dimostrato che $u_0$, la nostra cicloide,
 al bordo fissate.
 </p>
 
+<p>
+In astratto se $\F$ è un funzionale definito 
+su uno spazio affine $X$ diremo che $\F$ 
+è convesso se per ogni $u,v\in X$ 
+e ogni $t\in (0,1)$ si ha:
+\[
+    \F((1-t)u + tv) \le (1-t)\F(u) + t\F(v).
+\]
+Diremo che $\F$ è <i>strettamente convesso</i>
+se vale la disuguaglianza stretta.
+</p>
+
+<p>
+Nel caso di un funzionale classico del calcolo delle 
+variazioni si ha $X=\ENCLOSE{u\in C^1([a,b])\colon u(a)=u_a, 
+    u(b)=u_b}$
+e $\F(u) = \int_a^b f(x,u,u')\, dx$.
+Se per ogni $x\in[a,b]$ la lagrangiana 
+$f=f(x,z,p)$ è convessa nella coppia $(z,p)$
+cioè se 
+$f(x,(1-t)z+tw,(1-t)p+tq)
+\le (1-t)f(x,z,p) + t f(x,w,q)$,
+risulta che $\F$ è convesso. Infatti:
+$$\begin{align*}
+    \F((1-t)u + tv) 
+    &= \int_a^b f(x,(1-t)u(x) + t v(x), 
+        (1-t)u'(x) + t v'(x))\, dx
+    \\
+    &\le \int_a^b \Enclose {(1-t) f(x,u(x),u'(x)) 
+        + t f(x,v(x),v'(x))}\, dx
+    \\
+    &= (1-t)\F(u) + t\F(v).
+\end{align*}$$
+</p>
+
+<p>
+Diremo che $u_0$ è <i>punto critico</i> di $\F$
+se per ogni $v\in X$ vale
+$$
+  \Enclose {\frac{d}{d\eps} \F(u_0 + \eps (v-u_0))}_{\eps=0}
+  = 0.
+$$
+</p>
+
+<p class="theorem">
+Se $\F$ è convesso e $u_0$ è punto critico di $\F$
+allora $u_0$ è minimo assoluto di $\F$.
+Se $\F$ è strettamente convesso $u_0$ è anche unico.
+</p>
+<p></p>
+
 <h2>Estremali, estremali deboli</h2>
 <p>
 Diremo che $u$ è un <i>estremale debole</i>
@@ -408,8 +455,7 @@ di massimo né punti di minimo, neanche localmente.
 L'esempio più semplice è $f(p)=p^3$ che ci fornisce 
 anche l'esempio con i funzionali del calcolo delle variazioni.
 </p>
-<p class="problem">
-<b>Problema 3.</b>
+<p class="problem" name="3">
 Minimizzare il funzionale:
 \[
     \F(u) = \int_0^1 u'(x)^3\, dx
@@ -443,7 +489,7 @@ Chiaramente la funzione può essere approssimata da funzioni
 $C^1$ (o anche $C^\infty$) senza modificare di molto 
 il funzionale. 
 </p>
-<p class="theorem"><b>Condizione di Eulero-Lagrange</b>
+<p class="theorem" name="condizione di Eulero-Lagrange">
 Se $u$ è un estremale debole per il funzionale classico 
 $\F$ con condizioni al bordo fissate, 
 se $u\in C^2$ e anche $f\in C^2$ almeno in un intorno 
@@ -453,7 +499,8 @@ l'equazione di Eulero-Lagrange:
 \frac{d}{dx} f_p = f_z.
 \]
 </p>
-<p class="proof"><b>Dimostrazione.</b> Già visto sopra. 
+<p class="proof">
+Già visto sopra. 
 Si tratta eventualmente di verificare che bastano le ipotesi 
 di regolarità appena enunciate.
 </p>
@@ -473,8 +520,7 @@ sono estremali.
 Posso costruire esempi di funzioni 
 </p>
 
-<p class="problem">
-<b>Equazione di Newton</b>
+<p class="problem" name="equazione di Newton">
 La lagrangiana $f(t,x,v) = \frac 1 2 m v^2 - V(x)$
 ha come equazione di E-L:
 \[
