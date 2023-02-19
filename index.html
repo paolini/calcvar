@@ -25,7 +25,7 @@
 <p>
 Il calcolo delle variazioni nasce con il seguente.
 </p>
-<p class="problem" name="della brachistocrona">
+<p class="problem" name="della brachistocrona" label="pb:brachistocrona">
 Tra tutte le curve che congiungono due estremi $O$ e $P$ 
 in un piano verticale, determinare quella che minimizza 
 il tempo di percorrenza di un corpo vincolato sulla curva,
@@ -166,7 +166,9 @@ anche su $[a,b]$.
 </p>
 
 <p>
-Nel caso del problema della brachistocrona abbiamo 
+Nel caso del 
+<span class="ref" label="pb:brachistocrona"></span> 
+della brachistocrona abbiamo 
 $f(x,z,p) = \frac{\sqrt{1+p^2}}{\sqrt {2gx}}$ e quindi 
 $f_z=0$, $f_p = \frac{p}{\sqrt{1+p^2}\sqrt {2gx}}$.
 L'equazione di Eulero-Lagrange diventa quindi
@@ -259,7 +261,7 @@ Ma nulla ci dice che la soluzione esista, e se esiste non possiamo
 immediatamente affermare che sia di classe $C^2$.
 Per convincerci di ciò facciamo dei semplici esempi.
 </p>    
-<p class="problem" name="2">
+<p class="problem" label="pb:1">
 Minimizzare il funzionale:
 $$
 \F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2\, dx
@@ -289,10 +291,10 @@ necessario considerare una classe più ampia di funzioni.
 D'altra parte le cose possono anche andare peggio, 
 come mostra l'esempio seguente.
 </p>
-<p class="problem" name="3">
+<p class="problem" label="pb:2">
 Minimizzare il funzionale:
 $$
-\F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2 + \Enclose{u'(x)}^2\, dx
+\F(u) = \int_{-1}^1 \Enclose{1-u'(x)^2}^2 + \Enclose{u(x)}^2\, dx
 $$
 tra tutte le funzioni $u\in C^1([-1,1])$.
 </p>
@@ -348,6 +350,7 @@ f_p = \frac{p}{\sqrt{1+p^2}\sqrt x},
 f_{pp} = \frac{1+p^2-p^2}{(1+p^2)^{3/2}\sqrt x}.
 $$
 </p>
+
 <p>Dunque la funzione sta sopra la sua retta tangente 
 in qualunque punto $p_0$. 
 Se $f(x,p)$ è convessa rispetto a $p$
@@ -455,7 +458,7 @@ di massimo né punti di minimo, neanche localmente.
 L'esempio più semplice è $f(p)=p^3$ che ci fornisce 
 anche l'esempio con i funzionali del calcolo delle variazioni.
 </p>
-<p class="problem" name="3">
+<p class="problem" label="pb:3">
 Minimizzare il funzionale:
 \[
     \F(u) = \int_0^1 u'(x)^3\, dx
