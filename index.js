@@ -16,6 +16,8 @@ function myRender() {
             "\\QQ": "\\mathbb{Q}",
             "\\NN": "\\mathbb{N}",
             "\\F": "\\mathcal{F}",
+            "\\M": "\\mathcal{M}",
+            "\\P": "\\mathcal{P}",
             "\\phi": "\\varphi",
             "\\eps": "\\varepsilon",
             "\\enclose": "\\left(#1\\right)",

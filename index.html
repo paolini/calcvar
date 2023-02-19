@@ -392,11 +392,11 @@ Diremo che $u$ è un <i>estremale debole</i>
 per il funzionale $\F$ se 
 per ogni variazione $\phi$ la derivata di $\F$ 
 nella direzione $\phi$ è nulla:
-$$
+\[
 0 = \delta\F(u,\phi)
 = \frac{\partial\F(u)}{\partial \phi} 
 = \Enclose{\frac{d}{d\eps}\F(u+\eps\phi)}_{\eps=0}.
-$$
+\]
 Chiaramente se $\F$ ha minimo in $u$ 
 allora $u$ è un estremale debole, come abbiamo già osservato.
 Per avere un estremale debole è sufficiente la minimalità locale 
@@ -411,9 +411,9 @@ anche l'esempio con i funzionali del calcolo delle variazioni.
 <p class="problem">
 <b>Problema 3.</b>
 Minimizzare il funzionale:
-$$ 
+\[
     \F(u) = \int_0^1 u'(x)^3\, dx
-$$
+\]
 sulla classe $C^1_0([0,1])$.
 </p>
 <p>
@@ -449,9 +449,9 @@ $\F$ con condizioni al bordo fissate,
 se $u\in C^2$ e anche $f\in C^2$ almeno in un intorno 
 aperto della curva $(x,u(x),u'(x))$, allora vale 
 l'equazione di Eulero-Lagrange:
-$$  
+\[
 \frac{d}{dx} f_p = f_z.
-$$
+\]
 </p>
 <p class="proof"><b>Dimostrazione.</b> Già visto sopra. 
 Si tratta eventualmente di verificare che bastano le ipotesi 
@@ -462,12 +462,12 @@ Le $u$ che soddisfano l'equazione di E-L sono chiamate
 <i>estremali</i>. 
 Dunque il teorema precedente afferma che estremali deboli 
 sono estremali. 
-$$
+\[
     \text{minimo} 
     \implies \text{minimo locale} 
     \implies \text{estremale debole}
     \Longleftarrow \text{estremale}.
-$$
+\]
 </p>
 <p>
 Posso costruire esempi di funzioni 
@@ -477,10 +477,106 @@ Posso costruire esempi di funzioni
 <b>Equazione di Newton</b>
 La lagrangiana $f(t,x,v) = \frac 1 2 m v^2 - V(x)$
 ha come equazione di E-L:
-$$
+\[
     - V_x = m x''
-$$
+\]
 che non è altro che l'equazione di Newton $F = ma$.
+</p>
+
+<h2>Calibrazioni, campi ottimali</h2>
+
+<p>Se vogliamo dimostrare che $u_0$ è effettivamente 
+un minimo del funzionale $\F$ dobbiamo mostrare 
+che $\F(u)\ge \F(u_0)$ per ogni competitore $u$.
+Supponiamo ora che la classe dei competitori abbia dato 
+al bordo assegnato: $u(a)=u_a$ e $u(b)=u_b$.
+
+In tal caso osserviamo che è possibile costruire 
+delle <i>lagrangiane nulle</i>. 
+Se prendiamo una funzione del tipo 
+\[
+    M(x,z,p) = S_x(x,z) + p \cdot S_p(x,z)
+\]
+si osserva che 
+\[
+M(x,u(x),u'(x)) = \frac{d}{dx} S(x,u(x))
+\]
+e dunque il funzionale
+\[
+\M(u) = \int_a^b M(x,u(x),u'(x))\, dx
+=\Enclose{S(x,u(x))}_{x=a}^b
+\]
+è costante su ogni competitore.
+Se dunque riusciamo a trovare 
+$S$ e di conseguenza $M$ tali che 
+$F(x,z,p) \ge M(x,z,p)$ 
+e $F(x,u_0(x),u_0'(x)) = M(x,u_0(x),u_0'(x))$,
+allora si avrà chiaramente 
+\[
+\F(u) \ge \M(u) = \M(u_0)
+\]
+e dunque sarà dimostrato che $u_0$ è un minimo 
+del funzionale $\F$.
+
+Un modo per costruire $S$ è quello
+di ricavare $S$ da una fibrazione dello spazio $(x,z)$ 
+tramite una famiglie di curve che contiene il grafico di $u_0$.
+
+In generale consideriamo il grafico $z=u_0(x)$ ed un intorno $G$ 
+di tale grafico nel piano $(x,z)$.
+Supponiamo ora di avere una famiglia di funzioni 
+$u_c(x)$ definite per $c$ in un intorno di $0$ 
+in modo tale che per $c=0$ si abbia $u_c(x)=u_0(x)$ 
+e che i grafici di $u_c(x)$ riempiano l'intorno $G$ 
+senza mai intersecarsi tra loro.
+
+Questo si ottiene tramite una funzione $f=f(x,c)$ che manda 
+un rettangolo $\Gamma=[a,b]\times [-\eps,\eps]$ nell'intorno 
+$G$ del grafico di $u_0$ in modo che sia $f(x,c) = (x, u_c(x))$
+con $f:\colon \Gamma\to G$ bigettiva.
+Un tale campo si dice <i>campo adattato</i> ad $u_0$.
+
+La fibrazione $f$ induce un campo di pendenze che denotiamo 
+con $\P$: $\P(x,z) = u_c'(x)$ dove $c=f^{-1}(x,z)$.
+Diremo che il campo $\P$, adattato a $u_0$, 
+è ottimale per il funzionale $\F$ in $u_0$ se 
+esiste una funzione $S(x,z)$ tale che posto 
+$M(x,z,p) = S_x(x,z) + p \cdot S_p(x,z)$ risulta 
+\[
+    F(x,z,p) \ge M(x,z,p)
+    \qquad\text{e}\qquad
+    F(x,u_0(x),u_0'(x)) = M(x,u_0(x),u_0'(x))
+\]
+per ogni $(x,z)\in G$ e per ogni $p\in \RR$.
+Questo ovviamente implica che 
+\[
+   \F(u) \ge \M(u) = \M(u_0) = \F(u_0)
+\]
+per ogni $u$ con grafico dentro $G$ e quindi 
+garantisce che $u_0$ è il minimo di $\F$ nell'intorno $G$.
+Si noti che stiamo ottenendo un minimo locale in topologia 
+$C^0$ e non in $C^1$.
+
+Per costruire $S$ dobbiamo identificarne delle proprietà. 
+Se vogliamo che $S$ renda $f$ ottimale bisogna che $S$ 
+soddisfi le equazioni di Caratheodory:
+\[
+\begin{align*}
+ S_x(x,z) &= F(x, z, \P(x,z)) - \P(x,z)\cdot F_p(x,z,\P(x,z)) \\
+ S_z(x,z) &= F_p(x,z,\P(x,z)).
+ \end{align*}
+\]
+
+Infatti, se $S$ soddisfa le equazioni di Caratheodory, si ha 
+\[
+F(x,z,\P) = 
+\]
+
+
+
+
+
+
 </p>
 
         </main></div>
