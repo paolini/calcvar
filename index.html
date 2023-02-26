@@ -615,10 +615,10 @@ Se $F\ge M$ allora $S$ rende $f$ ottimale
 se e solo se 
 $S$ soddisfa le <i>equazioni di Caratheodory:</i>    
 \[
-\begin{align*}
- S_x(x,z) &= F(x, z,\P) - \P\cdot F_p(x,z,\P) \\
- S_z(x,z) &= F_p(x,z,\P).
- \end{align*}
+\begin{cases}
+ S_x(x,z) = F(x, z,\P) - \P\cdot F_p(x,z,\P) \\
+ S_z(x,z) = F_p(x,z,\P).
+ \end{cases}
 \]
 </p>
 <p class="proof">
@@ -643,6 +643,45 @@ Ma ora, visto che $F(x,z,\P) = M(x,z,\P)$
 si deduce $F(x,z,\P) = S_x + \P S_z(x,z,\P)
 = S_x + \P F_p(x,z,\P)$.
 </p>
+
+Sia dunque 
+\[
+\omega 
+    = \enclose{F(x, z,\P) - \P\cdot F_p(x,z,\P)}\, dx 
+    + F_p(x,z,\P)\, dz.
+\]
+Nello spazio $(x,z,p)$ definiamo la forma differenziale 
+\[
+\gamma
+    = \enclose{F(x, z, p) - p \cdot F_p(x,z,p)}\, dx
+    + F_p(x,z,p)\, dz
+\]
+di cui $\omega$ è il pull-back tramite 
+la funzione $\Phi(x,z) = (x,z,\P(x,z))$:
+\[
+  \Gamma_{xc} \stackrel{f}{\longrightarrow} 
+  G_{xz} \stackrel{\Phi}{\longrightarrow}
+  \RR^3_{xzp}.
+\]
+Vogliamo dimostrare che $\omega$ è chiusa 
+cosicché se $G$ è semplicemente connesso 
+possiamo dedurre che $\omega$ sia esatta, 
+cioè che effettivamente esista $S$ 
+tale che $dS = S_x dx + S_z dz = \omega$.
+
+Vogliamo mostrare che $d f^*\omega = 0$.
+Notiamo che $f^* dx = dx$ 
+mentre $f^* dz = u'_c dx + \frac d{dc} u_c(x) dc$. 
+Visto che $f(x,c) = (x,u_c(x))$ 
+e $\P(f(x,c)) = u_c'(x)$
+\[
+  f^* \omega = \enclose{F(x, u_c,u'_c) - u'_c \cdot F_p(x,u_c,u'_c)}\, dx 
+    + F_p(x,u_c,u'_c)\, 
+\]
+da cui 
+\[
+ d f^* \omega = 
+\]
 
 
         </main></div>
