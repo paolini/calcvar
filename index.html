@@ -655,6 +655,7 @@ Nello spazio $(x,z,p)$ definiamo la forma differenziale
 \gamma
     = \enclose{F(x, z, p) - p \cdot F_p(x,z,p)}\, dx
     + F_p(x,z,p)\, dz
+    = \enclose(F-pF_p)dx + F_p dz
 \]
 di cui $\omega$ è il pull-back tramite 
 la funzione $\Phi(x,z) = (x,z,\P(x,z))$:
@@ -670,18 +671,21 @@ cioè che effettivamente esista $S$
 tale che $dS = S_x dx + S_z dz = \omega$.
 
 Vogliamo mostrare che $d f^*\omega = 0$.
-Notiamo che $f^* dx = dx$ 
-mentre $f^* dz = u'_c dx + \frac d{dc} u_c(x) dc$. 
-Visto che $f(x,c) = (x,u_c(x))$ 
-e $\P(f(x,c)) = u_c'(x)$
+Tramite la composizione $\Phi\circ f$ si ha
+$z=u_c(x)$, $p=u_c'(x)$ e 
+$dz = u'_c dx + \frac d{dc} u_c(x) dc$. 
+Dunque si ha:
 \[
-  f^* \omega = \enclose{F(x, u_c,u'_c) - u'_c \cdot F_p(x,u_c,u'_c)}\, dx 
-    + F_p(x,u_c,u'_c)\, 
+  \begin{align*}
+  f^* \omega 
+    &= f^* \Phi^* \gamma\\
+    &= \enclose{F(x,u_c,u'_c) - u'_c F_p(x,u_c,u'_c))} dx 
+    + F_p(x,u_c,u'_c) \enclose{u'_c dx + \frac {du_c}{dc} \, dc}
+    \\
+    &= F(x,u_c,u'_c)dx + F_p(x,u_c,u'_c) \frac {du_c}{dc} u_c\, dc
+  \end{align*}.
 \]
-da cui 
-\[
- d f^* \omega = 
-\]
+
 
 
         </main></div>
