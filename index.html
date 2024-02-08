@@ -152,13 +152,13 @@ Se $g\in C^0([a,b])$ e $\int_a^b g(x)\phi(x)\, dx = 0$ per ogni $\phi\in C_c^\in
 allora $g(x)=0$ per ogni $x\in [a,b]$.
 </p>
 <p class="proof">
-Se fosse $g(x_0) > 0$ con $x_0\in (a,b)$ allora esiste 
-un intorno $I$ di $x_0$ tale che $g(x) > 0$ per ogni $x\in I$.
+Se fosse $g(x_0) &gt; 0$ con $x_0\in (a,b)$ allora esiste 
+un intorno $I$ di $x_0$ tale che $g(x) &gt; 0$ per ogni $x\in I$.
 Ma è possibile costruire $\phi\in C_c^\infty([a,b])$ 
-tale che $\phi(x_0)> 0$, $\phi(x)\ge 0$ per ogni $x\in I$
+tale che $\phi(x_0) &gt; 0$, $\phi(x)\ge 0$ per ogni $x\in I$
 e $\phi(x) = 0$ per ogni $x\not \in I$.
 Chiaramente si avrebbe $\int_a^b g(x)\phi(x)\, dx 
-= \int_I g(x)\phi(x)\, dx > 0$, contro l'ipotesi.
+= \int_I g(x)\phi(x)\, dx &gt; 0$, contro l'ipotesi.
 
 Allo stesso modo si procede se $g(x_0) &lt; 0$. 
 Se poi $g$ si annulla su tutto $(a,b)$ per continuità si annulla 
@@ -189,7 +189,7 @@ $$
     = c^2 \cdot \frac{x}{1-c^2\cdot x}
     = c^2 \cdot \frac{x^2}{x-c^2 x^2}
 $$
-supponendo $u'>0$ 
+supponendo $u'&gt;0$ 
 $$\begin{align*}
     u'(x) 
     &= \frac{cx}{\sqrt{x-c^2x^2}}
@@ -197,23 +197,19 @@ $$\begin{align*}
     \\
     &= \frac{2c^2 x}{\sqrt{1-(2c^2 x - 1)^2}}.
 \end{align*}$$
-Dunque integrando e facendo il cambio di variabile 
-$s=1-2c^2 x$ si ottiene
+Dunque integrando, e ponendo $R=\frac 1 {2c^2}$, si ha  
 $$
 \begin{align*}
     u(x) 
-    &= \int_0^x \frac{2c^2x}{\sqrt{1-(2c^2 x - 1)^2}}\, dx
+    &= \int_0^x \frac{2c^2x-1 +1}{\sqrt{1-(1 - 2c^2 x)^2}}\, dx
     \\
-    &= \frac{1}{2c^2}\int_1^{1-2c^2x} \frac{s-1}{\sqrt{1-s^2}}\, ds 
+    &= -\sqrt{1-(1-2c^2x)^2} + \frac{1}{2c^2}\arccos(1-2c^2x)
     \\
-    &= \frac{1}{2c^2}\Enclose{-\sqrt{1-s^2}+\arccos s}_1^{1-2c^2x} 
+    &= R\Enclose{\arccos\enclose{1-\frac x R} - \sqrt{1-\enclose{1-\frac x R}^2}}
     \\
-    &= R\Enclose{\arccos\enclose{1-\frac x R} - \sqrt{1-\enclose{\frac x R -1}^2}}
-    \\
-    &= R \arccos\frac{R-x}{R} - \sqrt{R^2 - (x-R)^2}
+    &= R \arccos\frac{R-x}{R} - \sqrt{R^2 - (x-R)^2}.
 \end{align*}
 $$
-dove abbiamo posto $R=\frac 1 {2c^2}$.
 Si può facilmente riconoscere che $u(x)$ è l'equazione di una cicloide 
 ovvero che il punto $P(x) = (x,u(x))$ si trova sulla circonferenza 
 di raggio $R$ che rotola al di sotto dell'asse $x$.
@@ -233,7 +229,7 @@ $$
 </p>
 <p>
 La soluzione che abbiamo trovato è solamente il primo arco di 
-cicloide, dove $u'>0$. 
+cicloide, dove $u'&gt;0$. 
 Il secondo arco (dove il punto materiale risale rallentando) si trova 
 scegliendo il segno opposto quando si estrae la radice quadrata.
 </p>
@@ -250,7 +246,7 @@ verificare che tale curva è concava.
 Allora basterà riscalare la curva in modo da ottenere 
 (in modo unico) il passaggio dal punto dato.
 </p>
-<h2>Weierstrass: l'esistenza non è garantita</h2>
+<h2>L'esistenza non è garantita</h2>
 <p>
 Nei paragrafi precedenti abbiamo mostrato che se c'è una soluzione 
 di classe $C^2$ del problema della brachistocrona allora tale soluzione 
@@ -318,7 +314,7 @@ pari a $1$ o $-1$ e valore compreso tra $0$ ed $\epsilon$.
 Abbiamo quindi un esempio di un funzionale che non ha minimo 
 neanche ampliando la classe delle funzioni considerate.
 </p>
-<h2>convessità</h2>
+<h2>Convessità</h2>
 <p>
 I funzionali considerati nei due esempi precedenti 
 sono della forma classica del calcolo delle variazioni 
@@ -473,8 +469,8 @@ Ma dalle condizioni al bordo dovrà essere $m=0$
 e $q=0$ quindi l'unica soluzione dell'equazione di E-L 
 è $u(x)=0$.
 D'altra parte con un po' di attenzione è possibile costruire 
-funzioni $u_\eps$ tali che $\F(u_\eps)\to -\infty$ 
-quando $\eps\to 0$.
+funzioni $u_k$ tali che $\F(u_k)\to -\infty$ 
+quando $\k\to +\infty$.
 Bisogna osservare che una funzione con lo stesso valore agli 
 estremi dell'intervallo deve avere una derivata con 
 media nulla: $\int_0^1 u' = u(1) - u(0) = 0$.
@@ -643,8 +639,6 @@ Ma ora, visto che $F(x,z,\P) = M(x,z,\P)$
 si deduce $F(x,z,\P) = S_x + \P S_z(x,z,\P)
 = S_x + \P F_p(x,z,\P)$.
 </p>
-
-
         </main></div>
         <!-- my code -->        
         <script src="index.js"></script>
