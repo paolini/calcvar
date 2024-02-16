@@ -36,70 +36,81 @@ alla forza di gravità.
 Mettiamo degli assi cartesiani ortogonali centrati nel punto $O$
 con l'asse delle $x$ orientato verso il basso e l'asse delle $y$ 
 orizzontale. 
-Siano $a$ e $b$ le coordinate del punto $P$.
+Siano $(b,c)$ le coordinate del punto $P$.
 Supponiamo che la curva si possa scrivere nella forma 
 $y=u(x)$. 
-Avremo dunque le condizioni: $u(0)=0$ e $u(a) = b$.
+Avremo dunque le condizioni: $u(0)=0$ e $u(b) = c$.
 Per la conservazione dell'energia abbiamo $\frac 1 2 m v^2 = m g x$
-da cui $v = \sqrt{2g x}$.
-Tale velocità ha direzione tangente alla curva e la sua 
-componente verticale $v_x$ è data da $v_x = \frac{v}{\sqrt{1+(u'(x))^2}}$.
-Avremo allora che il tempo impiegato per andare dal 
-punto $0$ lungo la curva fino al punto $P$, è dato da
+da cui $|v| = \sqrt{2g x}$.
+Ma $v(t) = (x'(t),y'(t)) = (x'(t), u'(x(t))x'(t))$ 
+da cui 
 $$
-    T 
-    = \int_0^a \frac{1}{v_x}\, dx 
-    = \int_0^a \frac{\sqrt{1+(u'(x))^2}}{\sqrt{2gx}}\, dx.
+  |v| = \sqrt{1+u'^2} \cdot |x'|.
+$$
+Supponiamo ora che sia $x'\ge 0$ (come ci aspettiamo succeda almeno per un certo tratto)
+e troviamo dunque $\sqrt{2gx} = \sqrt{1+u'^2} \cdot \frac{dx}{dt}$. 
+
+Avremo allora che il tempo impiegato per andare dal 
+punto $0$ lungo la curva fino al punto $P=(b,c)$, è dato da
+$$
+    T = \int_0^T\, dt = \int_0^a \frac{dt}{dx}\, dx
+      = \int_0^b \frac{\sqrt{1+(u'(x))^2}}{\sqrt{2gx}}\, dx.
 $$
 </p>
 <p>
-La nostra incognita è la funzione $u$ che supponiamo essere 
-di classe $C^1$ per dare senso ai calcoli fatti sopra e dovrà 
+La nostra incognita è la funzione $u$, che supponiamo essere 
+di classe $C^1$ per dare senso ai calcoli fatti sopra, e dovrà 
 soddisfare le condizioni <i>al bordo</i>
-$u(0)=0$ e $u(a)=b$. 
+$u(0)=0$ e $u(b)=c$. 
 Siamo quindi interessati a cercare la soluzione $u\in U$ 
 nell'insieme delle funzioni:
 $$
-    U = \ENCLOSE{u\in C^1([0,a])\colon u(0)=0, u(a)=b}.
+    U = \ENCLOSE{u\in C^1([a,b])\colon u(a)=u_a, u(b)=u_b}
 $$
+con $a=0$, $u_a=0$, $u_b=c$.
 Si noti che $U$ è un sottospazio affine dello spazio 
-vettoriale $C^1([0,a])$ infatti si ha 
+vettoriale $C^1([a,b])$ infatti si ha 
 $$
     U-U 
     = \ENCLOSE{u_1-u_2\colon u_1\in U, u_2\in U}
-    = \ENCLOSE{u\in C^1([0,a])\colon u(0)=u(a)=0}
-    = C^1_0([0,a]) 
+    = \ENCLOSE{u\in C^1([0,b])\colon u(a)=u(b)=0}
+    = C^1_0([a,b]) 
 $$
 che è un sottospazio vettoriale di $C^1$.
 </p>
+
 <p>
 Il nostro problema è quindi quello di trovare un 
 minimo del funzionale 
 $$
-    \F \colon U \to \mathbb R,\\
-    \F(u) = \int_I f(x, u(x), u'(x)) \, dx
+\begin{gathered}
+    \L \colon U \to \mathbb R,\\
+    \L(u) = \int_a^b L(x, u(x), u'(x)) \, dx
+\end{gathered}
 $$
-con $I=[0,a]$ e $f(x,z,p)=\frac{\sqrt{1+p^2}}{\sqrt{2gx}}$.
+con $a=0$ e $L(x,y,z)=\frac{\sqrt{1+z^2}}{\sqrt{2gx}}$.
 Un funzionale scritto in questa forma è chiamato 
 <i>funzionale classico del calcolo delle variazioni.</i>
+La funzione $L=L(x,y,z)$ è chiamata <i>lagrangiana</i>.
 </p>
 
 <h2>Equazione di Eulero-Lagrange</h2>
+
 <p>
-Se $U$ è uno spazio affine sullo spazio vettoriale $V$
-data $\phi\in V$ la restrizione del funzionale $\F$ 
+Se $U$ è uno spazio affine parallelo allo spazio vettoriale $V$
+data $\phi\in V$ la restrizione del funzionale $\L$ 
 alla retta passante per $u$ con direzione $\phi$ 
 è data da
 $$
-    g(t) = \F(u+t\phi).
+    g(t) = \L(u+t\phi).
 $$ 
-Se $u$ è un punto di minimo del funzionale $\F$ 
+Se $u$ è un punto di minimo del funzionale $\L$ 
 allora $0$ dovrà essere punto di minimo per $g$ 
 e se $g$ è derivabile si avrà quindi $g'(0)=0$.
 </p>
 <p>
 La derivata $g'(0)$ non è altro che la derivata direzionale 
-$\frac{\partial F}{\partial \phi}(u)$
+$\frac{\partial L}{\partial \phi}(u)$
 (chiamata <i>derivata di Gateaux,</i>
 nel contesto degli spazi di dimensione infinita).
 La funzione $\phi$ rappresenta una <i>variazione</i>
@@ -110,40 +121,44 @@ nel seguente.
 </p>
 
 <p class="theorem" name="equazione di Eulero-Lagrange">
-Sia $u\in C^2([a,b])$ e sia $f=f(x,z,p)$ una funzione di 
+Sia $u\in C^2([a,b])$ e sia $L=L(x,y,z)$ una funzione di 
 classe $C^2$ definita in un intorno della curva 
 $x\mapsto (x,u(x),u'(x))$. 
-Se $\F(u)$ è minimo allora in $u$ si ha
+Se $\L(u)$ è minimo allora in $u$ si ha
 $$
-    f_z = \frac{d}{dx} f_p
+    L_y = \frac{d}{dx} L_z
 $$ 
 cioè, più esplicitamente,
 $$
-    f_z (x,u(x),u'(x)) = \frac{d}{dx} \Enclose{f_p(x,u(x),u'(x))}.
+    L_y (x,u(x),u'(x)) = \frac{d}{dx} \Enclose{L_z(x,u(x),u'(x))}.
 $$
 </p>
 <p class="proof">
 Si ha
 $$
-    \frac{\partial F}{\partial \phi}(u)  
-    = \Enclose{\frac{d}{dt}\int_I f(x,u+t \phi,u'+t\phi')\, dx}_{t=0}.
+    \frac{\partial L}{\partial \phi}(u)  
+    = \Enclose{\frac{d}{dt}\int_a^b L(x,u+t \phi,u'+t\phi')\, dx}_{t=0}
+    = \Enclose{\frac{d}{dt}\int_a^b f(x,t)}_{t=0}
 $$
-Se $f$ è di classe $C^1$ in un intorno della curva 
-$x\mapsto (x,u(x),u'(x))$ 
-allora posso scambiare la derivata con l'integrale:
+con $g(x,t)= L(x,u(x)+t\phi(x),u'(x)+t\phi'(x))$.
+Se $L$ è di classe $C^1$ in un intorno della curva
+$x\mapsto (x,u(x),u'(x))$ e se $u$ e $\phi$
+sono di classe $C^2$
+allora $g(x,y)$ è di classe $C^1$ e 
+posso scambiare la derivata con l'integrale:
 $$
-\Enclose{\frac{d}{dt} \int_a^b f(x,u+t\phi,u'+t\phi')}_{t=0}
-= \int_a^b \left[ f_z(x,u,u') \phi 
-    + f_{p}(x,u,u') \phi' \right] \, dx.
+\Enclose{\frac{d}{dt} \int_a^b L(x,u+t\phi,u'+t\phi')}_{t=0}
+= \int_a^b \left[ L_y(x,u,u') \phi 
+    + L_z(x,u,u') \phi' \right] \, dx.
 $$
-Se ora $f$ è di classe $C^2$ e anche $u$ lo è, 
+Se ora $L$ e $u$ sono di classe $C^2$, 
 possiamo integrare per parti e ottenere 
 $$
-= \int_a^b \enclose{f_z(x,u,u') -(f_p(x,u,u'))_x } \phi(x) \, dx.
+= \int_a^b \enclose{L_y(x,u,u') -(L_z(x,u,u'))_x } \phi(x) \, dx.
 $$
 In base al lemma seguente concludiamo che 
 $$
-    f_z = \frac{d}{dx} f_p.
+    L_y = \frac{d}{dx} L_z.
 $$
 </p>
 
@@ -165,12 +180,13 @@ Se poi $g$ si annulla su tutto $(a,b)$ per continuità si annulla
 anche su $[a,b]$.
 </p>
 
+<h2>La brachistocrona è una cicloide</h2>
 <p>
 Nel caso del 
 <span class="ref" label="pb:brachistocrona"></span> 
 della brachistocrona abbiamo 
-$f(x,z,p) = \frac{\sqrt{1+p^2}}{\sqrt {2gx}}$ e quindi 
-$f_z=0$, $f_p = \frac{p}{\sqrt{1+p^2}\sqrt {2gx}}$.
+$L(x,y,z) = \frac{\sqrt{1+z^2}}{\sqrt {2gx}}$ e quindi 
+$f_y=0$, $f_z = \frac{z}{\sqrt{1+z^2}\sqrt {2gx}}$.
 L'equazione di Eulero-Lagrange diventa quindi
 $$
     \frac{d}{dx}\frac{u'}{\sqrt{2gx}\cdot \sqrt{1+u'^2}} = 0.
@@ -190,16 +206,16 @@ $$
     = c^2 \cdot \frac{x^2}{x-c^2 x^2}
 $$
 supponendo $u'&gt;0$ 
-$$\begin{align*}
+$$\begin{aligned}
     u'(x) 
     &= \frac{cx}{\sqrt{x-c^2x^2}}
     = \frac{cx}{\sqrt{\frac 1{4c^2} - \enclose{cx - \frac 1{2c}}^2}} 
     \\
     &= \frac{2c^2 x}{\sqrt{1-(2c^2 x - 1)^2}}.
-\end{align*}$$
+\end{aligned}$$
 Dunque integrando, e ponendo $R=\frac 1 {2c^2}$, si ha  
 $$
-\begin{align*}
+\begin{aligned}
     u(x) 
     &= \int_0^x \frac{2c^2x-1 +1}{\sqrt{1-(1 - 2c^2 x)^2}}\, dx
     \\
@@ -208,7 +224,7 @@ $$
     &= R\Enclose{\arccos\enclose{1-\frac x R} - \sqrt{1-\enclose{1-\frac x R}^2}}
     \\
     &= R \arccos\frac{R-x}{R} - \sqrt{R^2 - (x-R)^2}.
-\end{align*}
+\end{aligned}
 $$
 Si può facilmente riconoscere che $u(x)$ è l'equazione di una cicloide 
 ovvero che il punto $P(x) = (x,u(x))$ si trova sulla circonferenza 
@@ -246,6 +262,72 @@ verificare che tale curva è concava.
 Allora basterà riscalare la curva in modo da ottenere 
 (in modo unico) il passaggio dal punto dato.
 </p>
+
+<h2>Formulazione debole</h2>
+
+<p class="theorem noproof" name="teorema di derivazione di Lebesgue">
+    Sia $\Omega\subset \RR^d$ aperto, $f\in L^1(\Omega)$.
+    Allora per quasi ogni $x\in \Omega$ si ha 
+    $$
+    \lim_{r\to 0} \frac{1}{\abs{B_r}}\int_{B_r(x)} |f(x)-f(y)|\, dy = 0
+    $$
+    e quindi 
+    $$  
+        f(x) = \lim_{r\to 0} \frac{1}{\abs{B_r}}\int_{B_r(x)} f(y)\, dy.
+    $$
+</p>
+
+<p class="theorem" name="lemma fondamentale del calcolo delle variazioni, forma debole">
+    Sia $u\in L^1(a,b)$ una funzione tale che per ogni $\phi\in C_c^\infty(a,b)$ si abbia
+    $$
+    \int_a^b u(x) \phi(x) \, dx = 0.   
+    $$  
+    Allora $u=0$ quasi ovunque.
+
+    Sia $u\in L^1(a,b)$ una funzione tale che per ogni $\phi\in C_c^\infty(a,b)$ si abbia
+    $$
+    \int_a^b u(x) \phi'(x) \, dx = 0.
+    $$
+    Allora esiste $c\in \RR$ tale che $u=c$ quasi ovunque.
+</p>
+
+<p>
+    Se $u,v\in L^1(a,b)$ diremo che $v$ è la <emph>derivata debole</emph> 
+    di $u$ se per ogni $\phi\in C_c^\infty(a,b)$ si ha
+    $$
+    \int_a^b u(x)\phi'(x)\, dx = -\int_a^b v(x)\phi(x)\, dx.
+    $$
+</p>
+
+<div class="theorem" name="proprietà della derivata debole">
+    <ol>
+
+        <li>
+            Se $v_1$ e $v_2$ sono due derivate deboli di $u$ in $L^1(a,b)$,
+            allora $v_1=v_2$ in $L^1(a,b)$.
+        </li>
+    </ol>
+</div>
+
+<p class="proof">
+    <ol>
+        <li>
+            Se $v_1$ e $v_2$ sono due derivate deboli di $u$ allora 
+            per ogni $\phi\in C_c^\infty(a,b)$ si ha
+            $$
+            \int_a^b u(x)\phi'(x)\, dx = -\int_a^b v_1(x)\phi(x)\, dx
+            = -\int_a^b v_2(x)\phi(x)\, dx.
+            $$
+            Ma allora si ha 
+            $$
+            \int_a^b (v_1(x)-v_2(x))\phi(x)\, dx = 0
+            $$
+            per ogni $\phi\in C_c^\infty(a,b)$ e quindi 
+            $v_1-v_2=0$ in $L^1(a,b)$.
+        </li>
+    </ol>
+</p>
+
 <h2>L'esistenza non è garantita</h2>
 <p>
 Nei paragrafi precedenti abbiamo mostrato che se c'è una soluzione 
@@ -341,9 +423,10 @@ soluzione dell'equazione di Eulero-Lagrange,
 Per verificare che $f$ è convessa rispetto a $p$ 
 basta farne le derivate:
 $$
-f_p = \frac{p}{\sqrt{1+p^2}\sqrt x}, 
-\\
-f_{pp} = \frac{1+p^2-p^2}{(1+p^2)^{3/2}\sqrt x}.
+\begin{aligned}
+    f_p &= \frac{p}{\sqrt{1+p^2}\sqrt x}, \\
+    f_{pp} &= \frac{1+p^2-p^2}{(1+p^2)^{3/2}\sqrt x}.
+\end{aligned}
 $$
 </p>
 

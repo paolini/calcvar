@@ -10,55 +10,31 @@ function main() {
         return numbering[name]
     }
 
+    const classes = {
+        theorem: {title: "Teorema"},
+        lemma: {title: "Lemma", numbering: 'theorem'},
+        corollary: {title: "Corollario", numbering: 'theorem'},
+        proposition: {title: "Proposizione", numbering: 'theorem'},
+        definition: {title: "Definizione", numbering: 'theorem'},
+        example: {title: "Esempio", numbering: 'theorem'},
+        remark: {title: "Osservazione", numbering: 'theorem'},
+        exercise: {title: "Esercizio", numbering: 'theorem'},
+        proof: {title: "Dimostrazione", proofType: true},
+        problem: {title: "Problema", numbering: 'theorem'},
+    }
+    
+    expandTheorems()
+
     function expandTheorems() {
         // take all <p> with class "theorem"
         // and add a <b>Teorema</b> as initial text
         // if <p> has a "name" property, then add 
         // then enclose the name between parentheses
-        const classes = {
-            theorem: {title: "Teorema"},
-            lemma: {title: "Lemma", numbering: 'theorem'},
-            corollary: {title: "Corollario", numbering: 'theorem'},
-            proposition: {title: "Proposizione", numbering: 'theorem'},
-            definition: {title: "Definizione", numbering: 'theorem'},
-            example: {title: "Esempio", numbering: 'theorem'},
-            remark: {title: "Osservazione", numbering: 'theorem'},
-            exercise: {title: "Esercizio", numbering: 'theorem'},
-            proof: {title: "Dimostrazione", proofType: true},
-            problem: {title: "Problema", numbering: 'theorem'},
-        }
-
+    
         document
-            .querySelectorAll(Object.keys(classes).map(x => `p.${x}`).join(','))
-            .forEach(theorem => {
-                // find the class of the theorem among all the classes
-                const className = theorem.className.split(' ').find(x => classes[x])
-                const options = classes[className]
-                const title = options.title
-                const numberName = options.numbering || className
-                let text = theorem.innerHTML
-                let myTitle = title 
-                const name = theorem.getAttribute("name")
-                if (options.proofType) {
-                    if (name) myTitle = name
-                    theorem.innerHTML = `<i>${myTitle}.</i> ${text}`
-                } else { 
-                    const number = getNumber(numberName)
-                    // store the number of the theorem in the label
-                    // named in attribute "label"
-                    const label = theorem.getAttribute("label")
-                    // check if the label is already used
-                    if (label && labels[label]) {
-                        console.log(`Label ${label} duplicated`)
-                    }
-                    if (label) labels[label] = `${myTitle}&nbsp;${number}`
-
-                    myTitle = `<b>${myTitle} ${number}</b>`
-                    if (name) myTitle = `${myTitle} (${name})`
-                    theorem.innerHTML = `${myTitle}<b>.</b> ${text}`
-                }
-        })
-
+            .querySelectorAll(Object.keys(classes).map(x => `.${x}`).join(','))
+            .forEach(t => injectTheorem(t,classes))
+        
         // expand all spans with class "ref"
         document
             .querySelectorAll('span.ref')
@@ -73,7 +49,34 @@ function main() {
             })
     }
 
-    expandTheorems()
+    function injectTheorem(theorem, classes) {
+        // find the class of the theorem among all the classes
+        const className = theorem.className.split(' ').find(x => classes[x])
+        const options = classes[className]
+        const title = options.title
+        const numberName = options.numbering || className
+        let text = theorem.innerHTML
+        let myTitle = title 
+        const name = theorem.getAttribute("name")
+        if (options.proofType) {
+            if (name) myTitle = name
+            theorem.innerHTML = `<i>${myTitle}.</i> ${text}`
+        } else { 
+            const number = getNumber(numberName)
+            // store the number of the theorem in the label
+            // named in attribute "label"
+            const label = theorem.getAttribute("label")
+            // check if the label is already used
+            if (label && labels[label]) {
+                console.log(`Label ${label} duplicated`)
+            }
+            if (label) labels[label] = `${myTitle}&nbsp;${number}`
+    
+            myTitle = `<b>${myTitle} ${number}</b>`
+            if (name) myTitle = `${myTitle} (${name})`
+            theorem.innerHTML = `${myTitle}<b>.</b> ${text}`
+        }
+    }    
 }
 
 function myRender() {
@@ -94,6 +97,7 @@ function myRender() {
             "\\QQ": "\\mathbb{Q}",
             "\\NN": "\\mathbb{N}",
             "\\F": "\\mathcal{F}",
+            "\\L": "\\mathcal{L}",
             "\\M": "\\mathcal{M}",
             "\\P": "\\mathcal{P}",
             "\\phi": "\\varphi",

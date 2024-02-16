@@ -3,28 +3,36 @@ main {
     text-align: justify;
 }
 
-.problem{
-    background-color: rgb(245, 255, 150);
+.problem {
+    background-color: rgb(230, 235, 185);
     padding: 1em;
     border-radius: 1em;
 }
 
 .theorem {
-    background-color: rgb(122, 255, 102);
+    background-color: rgb(124, 205, 111);
     padding: 1em;
     border-radius: 1em 1em 0 0;
     margin-bottom: 5px;
 }
 
+.noproof {
+    border-radius: 1em 1em 1em 1em;
+}
+
 .lemma {
-    background-color: rgb(123, 224, 255);
+    background-color: rgb(156, 193, 204);
     padding: 1em;
     border-radius: 1em 1em 0 0;
     margin-bottom: 5px;
 }
 
 .proof {
-    background-color: rgba(181, 181, 181, 0.687);
+    background-color: rgba(211, 211, 211, 0.687);
     padding: 1em;
     border-radius: 0 0 1em 1em;
+}
+
+ol.theorem {
+    padding-left: 1em;
 }
