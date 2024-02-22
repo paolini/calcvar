@@ -186,7 +186,7 @@ Nel caso del
 <span class="ref" label="pb:brachistocrona"></span> 
 della brachistocrona abbiamo 
 $L(x,y,z) = \frac{\sqrt{1+z^2}}{\sqrt {2gx}}$ e quindi 
-$f_y=0$, $f_z = \frac{z}{\sqrt{1+z^2}\sqrt {2gx}}$.
+$L_y=0$, $L_z = \frac{z}{\sqrt{1+z^2}\sqrt {2gx}}$.
 L'equazione di Eulero-Lagrange diventa quindi
 $$
     \frac{d}{dx}\frac{u'}{\sqrt{2gx}\cdot \sqrt{1+u'^2}} = 0.
@@ -219,7 +219,7 @@ $$
     u(x) 
     &= \int_0^x \frac{2c^2x-1 +1}{\sqrt{1-(1 - 2c^2 x)^2}}\, dx
     \\
-    &= -\sqrt{1-(1-2c^2x)^2} + \frac{1}{2c^2}\arccos(1-2c^2x)
+    &= -\frac{1}{2c^2}\sqrt{1-(1-2c^2x)^2} + \frac{1}{2c^2}\arccos(1-2c^2x)
     \\
     &= R\Enclose{\arccos\enclose{1-\frac x R} - \sqrt{1-\enclose{1-\frac x R}^2}}
     \\
@@ -277,7 +277,7 @@ Allora basterà riscalare la curva in modo da ottenere
     $$
 </p>
 
-<p class="theorem" name="lemma fondamentale del calcolo delle variazioni, forma debole">
+<p class="theorem" label="th:fondamentale_debole" name="lemma fondamentale del calcolo delle variazioni, forma debole">
     Sia $u\in L^1(a,b)$ una funzione tale che per ogni $\phi\in C_c^\infty(a,b)$ si abbia
     $$
     \int_a^b u(x) \phi(x) \, dx = 0.   
@@ -291,7 +291,7 @@ Allora basterà riscalare la curva in modo da ottenere
     Allora esiste $c\in \RR$ tale che $u=c$ quasi ovunque.
 </p>
 
-<p>
+<p class="definition" name="derivata debole">
     Se $u,v\in L^1(a,b)$ diremo che $v$ è la <emph>derivata debole</emph> 
     di $u$ se per ogni $\phi\in C_c^\infty(a,b)$ si ha
     $$
@@ -301,15 +301,28 @@ Allora basterà riscalare la curva in modo da ottenere
 
 <div class="theorem" name="proprietà della derivata debole">
     <ol>
-
         <li>
             Se $v_1$ e $v_2$ sono due derivate deboli di $u$ in $L^1(a,b)$,
             allora $v_1=v_2$ in $L^1(a,b)$.
         </li>
+        <li>
+            Se $v\in L^1(a,b)$ e definiamo 
+            $$
+              u(x) = \int_a^x v(t)\, dt
+            $$
+            allora $v$ è la derivata debole di $u$.
+        </li>
+        <li>
+            Se $v$ è la derivata debole di $u$ allora per ogni 
+            $\phi\in C_c^\infty(a,b)$ si ha
+            $$
+            \int_a^b u(x)\phi(x)\, dx = -\int_a^b v(x)\phi(x)\, dx.
+            $$
+        </li>
     </ol>
 </div>
 
-<p class="proof">
+<div class="proof">
     <ol>
         <li>
             Se $v_1$ e $v_2$ sono due derivate deboli di $u$ allora 
@@ -322,11 +335,12 @@ Allora basterà riscalare la curva in modo da ottenere
             $$
             \int_a^b (v_1(x)-v_2(x))\phi(x)\, dx = 0
             $$
-            per ogni $\phi\in C_c^\infty(a,b)$ e quindi 
+            per ogni $\phi\in C_c^\infty(a,b)$ e quindi,
+            per il <span class="ref" label="th:fondamentale_debole" ></span>,
             $v_1-v_2=0$ in $L^1(a,b)$.
         </li>
     </ol>
-</p>
+</div>
 
 <h2>L'esistenza non è garantita</h2>
 <p>
